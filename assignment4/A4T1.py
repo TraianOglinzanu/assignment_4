@@ -7,7 +7,7 @@ from bson.json_util import loads
 client = MongoClient('mongodb://127.0.0.1:27017')
 
 #create or open database on server 
-db = client["A4DBNorm"]
+db = client["A4dbNorm"]
 
 # List collection names.
 collist = db.list_collection_names()
