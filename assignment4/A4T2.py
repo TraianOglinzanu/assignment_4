@@ -22,8 +22,8 @@ if "tracks" in collist:
 artists_collection = db["artists"]
 tracks_collection = db["tracks"]
 
-f = open('artists.json')
-g = open('tracks.json')
+f = open('artists.json', encoding='utf-8')
+g = open('tracks.json', encoding='utf-8')
 
 data = loads(f.read())
 data_2 = loads(g.read())
