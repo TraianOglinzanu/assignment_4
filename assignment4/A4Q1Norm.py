@@ -12,6 +12,7 @@ artists_collection = db["artists"]
 
 #important below!!!!
 #right now it should return the ones that have no tracks. inverting the condition will give the right answer but thats harder to check so this is for testing
-for artist in artists_collection.find({"artists": "tracks"}).count()<1:
+
+for artist in artists_collection.find({"tracks": { '$size': 0}}):
   pprint.pprint(artist)#ill figure out the correct formatting later
 
