@@ -10,9 +10,12 @@ db = client["A4DBNorm"]
 
 artists_collection = db["artists"]
 
-#important below!!!!
-#right now it should return the ones that have no tracks. inverting the condition will give the right answer but thats harder to check so this is for testing
-
-for artist in artists_collection.find({"tracks": { '$size': 0}}):
+# important below!!!!
+# right now it should return the ones that have no tracks. 
+# inverting the condition will give the right answer but thats harder to check so this is for testing
+# Q1:
+# Find the ids and names of each artist that has at least one track 
+# and the number of tracks by each such artist.
+for artist in artists_collection.find({"$where": "this.tracks.length > 1"}, {"artist_id":1, "name":1}):
   pprint.pprint(artist)#ill figure out the correct formatting later
 
