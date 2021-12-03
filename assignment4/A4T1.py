@@ -12,15 +12,15 @@ db = client["A4dbNorm"]
 # List collection names.
 collist = db.list_collection_names()
 
-if "artists" in collist:
+if "Artists" in collist:
     print("The collection exists.")
 
-if "tracks" in collist:
+if "Tracks" in collist:
     print("The collection exists.")
 
 # Create or open the collection in the db
-artists_collection = db["artists"]
-tracks_collection = db["tracks"]
+artists_collection = db["Artists"]
+tracks_collection = db["Tracks"]
 
 f = open('artists.json', encoding='utf-8')
 g = open('tracks.json', encoding='utf-8')
