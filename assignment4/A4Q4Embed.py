@@ -7,29 +7,24 @@ import datetime
 client = MongoClient('mongodb://localhost:27017')
 
 #create or open database on server 
-db = client["A4dbNorm"]
+db = client["A4dbEmbed"]
 
-tracks_collection = db["Tracks"]
+artistTracksCollection = db["ArtistsTracks"]
 d = datetime.datetime(1950, 1, 1)
 
 
 # Q4: For each track that was released after 1950-01-01,
 # find the track name, artist name and track release date.
 
-result = tracks_collection.aggregate([
+result = artistTracksCollection.aggregate([
   {
-    '$match': { 'release_date': {'$gt': d} }
+    '$unwind': {'path': '$tracks'}
   },
   {
-    '$lookup': {
-        'from':'Artists',
-        'localField': 'artist_ids',
-        'foreignField' : 'artist_id',
-        'as': 'artists'
-    }
+    '$match': { 'tracks.release_date': {'$gt': d} }
   },
   {
-    '$project': {'name':'$artists.name', 't_name':"$name", "t_release_date":'$release_date'}
+    '$project': {'name':1, 't_name':"$tracks.name", "t_release_date":'$tracks.release_date'}
   }
 ])
 
