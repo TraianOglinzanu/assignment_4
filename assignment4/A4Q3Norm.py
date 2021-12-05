@@ -1,8 +1,4 @@
 from pymongo import MongoClient
-import json
-from bson.json_util import loads
-import pprint
-import datetime
 
 client = MongoClient('mongodb://localhost:27017')
 
@@ -10,8 +6,6 @@ client = MongoClient('mongodb://localhost:27017')
 db = client["A4dbNorm"]
 
 artists = db["Artists"]
-d = datetime.datetime(1950, 1, 1)
-
 
 # Q3: Find the sum of the length of all tracks for each artist along with the artist’s id.
 
@@ -36,7 +30,6 @@ result = artists.aggregate([
     '$project': {'total_length': 1, 'artist_id':'$_id'}
   }
 ])
-
 
 for i in list(result):
   print(i)
