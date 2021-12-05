@@ -1,7 +1,4 @@
 from pymongo import MongoClient
-import json
-from bson.json_util import loads
-import pprint
 
 client = MongoClient('mongodb://localhost:27017')
 
@@ -20,9 +17,6 @@ result = tracks_collection.aggregate([
     { "$match": {'tracks.track_id': {"$regex": "^70"}}},
     { "$group": {"_id": "", "avg_danceability" : {"$avg": "$tracks.danceability"}}}#why does this work
 ])
-pprint.pprint(list(result))
 
-
-# avg = sum/count
-# result = {'_id':"",'avg_danceability':avg}
-# print(result)
+for i in list(result):
+    print(i)
