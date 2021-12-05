@@ -45,4 +45,5 @@ pipeline = [{
 for i in artists_collection.aggregate(pipeline):
     ArtistsTracks.insert_one(i)
 
-
+client.drop_collection("artisits")
+client.drop_collection("tracks")
