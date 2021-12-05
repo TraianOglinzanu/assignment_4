@@ -10,6 +10,8 @@ db = client["A4dbNorm"]
 
 tracks_collection = db["Tracks"]
 
+# Q2: Write a query to get the average danceability for all tracks that have a track_id beginning with “70”.
+
 sum = 0.0
 count = 0
 avg = 0.0
