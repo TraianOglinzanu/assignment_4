@@ -1,7 +1,6 @@
 #A4T1.py
 
 from pymongo import MongoClient
-import json
 from bson.json_util import loads
 
 client = MongoClient('mongodb://127.0.0.1:27017')

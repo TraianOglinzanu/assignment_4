@@ -1,8 +1,4 @@
 from pymongo import MongoClient
-import json
-from bson.json_util import loads
-import pprint
-import datetime
 
 client = MongoClient('mongodb://localhost:27017')
 

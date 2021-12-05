@@ -1,7 +1,6 @@
 #A4T2.py
 
 from pymongo import MongoClient
-import json
 from bson.json_util import loads
 
 client = MongoClient('mongodb://127.0.0.1:27017')
@@ -45,5 +44,5 @@ pipeline = [{
 for i in artists_collection.aggregate(pipeline):
     ArtistsTracks.insert_one(i)
 
-client.drop_collection("artists_collection")
-client.drop_collection("tracks_collection")
+db.drop_collection("artists")
+db.drop_collection("tracks")
